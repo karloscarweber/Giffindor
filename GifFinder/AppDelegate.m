@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "GiphyKit.h"
+#import "GifViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,15 +16,21 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // start up the database just in case.
+    [GKStart start];
+    
     // Override point for customization after application launch.
-    UITableViewController *tvc = [[UITableViewController alloc] init];
+    GifViewController *tvc = [[GifViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] init];    
+    [nc pushViewController:tvc animated:YES];
     
-    self.window.rootViewController = tvc;
+    self.window.rootViewController = nc;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

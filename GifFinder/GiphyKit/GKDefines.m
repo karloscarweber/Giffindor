@@ -20,7 +20,7 @@ NSString *const GKGetGifsById    = @"/v1/gifs";
 
 // This is the public beta key.
 // Change this if you want to go all production like.
-NSString *const kRCKCurrentUserIDKey = @"dc6zaTOxFJmzC";
+NSString *const GKAPIKey = @"dc6zaTOxFJmzC";
 
 #pragma mark - Notifications
 

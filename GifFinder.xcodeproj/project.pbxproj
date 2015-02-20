@@ -1,1065 +1,526 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>08D7104E5CA1984C2A135600</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>24A89A324F9D3029A463B3EE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>65E81C1EFCEDF5EF23F443E5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CF4095311B6E88526D6A6F3F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6861A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6BE1A9668F20018C58F</string>
-				<string>AE80F6911A9665830018C58F</string>
-				<string>AE80F6AB1A9665830018C58F</string>
-				<string>AE80F6901A9665830018C58F</string>
-				<string>C87026E7BA80CE1314B1EA02</string>
-				<string>C22F68E5CD9BBE9EF92414DA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6871A9665830018C58F</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0610</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Prologue</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>AE80F68E1A9665830018C58F</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.1.1</string>
-					</dict>
-					<key>AE80F6A71A9665830018C58F</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.1.1</string>
-						<key>TestTargetID</key>
-						<string>AE80F68E1A9665830018C58F</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>AE80F68A1A9665830018C58F</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>AE80F6861A9665830018C58F</string>
-			<key>productRefGroup</key>
-			<string>AE80F6901A9665830018C58F</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>AE80F68E1A9665830018C58F</string>
-				<string>AE80F6A71A9665830018C58F</string>
-			</array>
-		</dict>
-		<key>AE80F68A1A9665830018C58F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>AE80F6B01A9665830018C58F</string>
-				<string>AE80F6B11A9665830018C58F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>AE80F68B1A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>AE80F69B1A9665830018C58F</string>
-				<string>AE80F6981A9665830018C58F</string>
-				<string>AE80F6C21A9675CC0018C58F</string>
-				<string>AE80F6C51A96763F0018C58F</string>
-				<string>AE80F6C81A967BBB0018C58F</string>
-				<string>AE80F6951A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F68C1A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>65E81C1EFCEDF5EF23F443E5</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F68D1A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>AE80F6A31A9665830018C58F</string>
-				<string>AE80F6A01A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F68E1A9665830018C58F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>AE80F6B21A9665830018C58F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>BC30798E424BFA8AE89D2556</string>
-				<string>AE80F68B1A9665830018C58F</string>
-				<string>AE80F68C1A9665830018C58F</string>
-				<string>AE80F68D1A9665830018C58F</string>
-				<string>BFE666A5E2555EE3F33F2772</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>GifFinder</string>
-			<key>productName</key>
-			<string>GifFinder</string>
-			<key>productReference</key>
-			<string>AE80F68F1A9665830018C58F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>AE80F68F1A9665830018C58F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GifFinder.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>AE80F6901A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F68F1A9665830018C58F</string>
-				<string>AE80F6A81A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6911A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6961A9665830018C58F</string>
-				<string>AE80F6971A9665830018C58F</string>
-				<string>AE80F6991A9665830018C58F</string>
-				<string>AE80F69A1A9665830018C58F</string>
-				<string>AE80F69F1A9665830018C58F</string>
-				<string>AE80F6A11A9665830018C58F</string>
-				<string>AE80F6921A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>GifFinder</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6921A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6931A9665830018C58F</string>
-				<string>AE80F6941A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6931A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6941A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6951A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6941A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6961A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6971A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6981A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6971A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6991A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F69A1A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F69B1A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F69A1A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F69F1A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6A01A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F69F1A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6A11A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6A21A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6A21A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6A31A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6A11A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6A41A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>AE80F6AF1A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F6A51A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F6A61A9665830018C58F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AE80F6A71A9665830018C58F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>AE80F6B51A9665830018C58F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>AE80F6A41A9665830018C58F</string>
-				<string>AE80F6A51A9665830018C58F</string>
-				<string>AE80F6A61A9665830018C58F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>AE80F6AA1A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>GifFinderTests</string>
-			<key>productName</key>
-			<string>GifFinderTests</string>
-			<key>productReference</key>
-			<string>AE80F6A81A9665830018C58F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>AE80F6A81A9665830018C58F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GifFinderTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>AE80F6A91A9665830018C58F</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>AE80F6871A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>AE80F68E1A9665830018C58F</string>
-			<key>remoteInfo</key>
-			<string>GifFinder</string>
-		</dict>
-		<key>AE80F6AA1A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>AE80F68E1A9665830018C58F</string>
-			<key>targetProxy</key>
-			<string>AE80F6A91A9665830018C58F</string>
-		</dict>
-		<key>AE80F6AB1A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6AE1A9665830018C58F</string>
-				<string>AE80F6AC1A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>GifFinderTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6AC1A9665830018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6AD1A9665830018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6AD1A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6AE1A9665830018C58F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>GifFinderTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6AF1A9665830018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6AE1A9665830018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6B01A9665830018C58F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>AE80F6B11A9665830018C58F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>AE80F6B21A9665830018C58F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>AE80F6B31A9665830018C58F</string>
-				<string>AE80F6B41A9665830018C58F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>AE80F6B31A9665830018C58F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>24A89A324F9D3029A463B3EE</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>GifFinder/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>AE80F6B41A9665830018C58F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>08D7104E5CA1984C2A135600</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>GifFinder/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>AE80F6B51A9665830018C58F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>AE80F6B61A9665830018C58F</string>
-				<string>AE80F6B71A9665830018C58F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>AE80F6B61A9665830018C58F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>GifFinderTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/GifFinder.app/GifFinder</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>AE80F6B71A9665830018C58F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>GifFinderTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/GifFinder.app/GifFinder</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>AE80F6BB1A9668D80018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GiphyKit.h</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GiphyKit.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6BE1A9668F20018C58F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AE80F6BB1A9668D80018C58F</string>
-				<string>AE80F6C31A96763F0018C58F</string>
-				<string>AE80F6C41A96763F0018C58F</string>
-				<string>AE80F6C61A967BBB0018C58F</string>
-				<string>AE80F6C71A967BBB0018C58F</string>
-				<string>AE80F6C01A9675CC0018C58F</string>
-				<string>AE80F6C11A9675CC0018C58F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GiphyKit</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C01A9675CC0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GKConnectionObject.h</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKConnectionObject.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C11A9675CC0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GKConnectionObject.m</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKConnectionObject.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C21A9675CC0018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6C11A9675CC0018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6C31A96763F0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GKDefines.h</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKDefines.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C41A96763F0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GKDefines.m</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKDefines.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C51A96763F0018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6C41A96763F0018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>AE80F6C61A967BBB0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GKStart.h</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKStart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C71A967BBB0018C58F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GKStart.m</string>
-			<key>path</key>
-			<string>GifFinder/GiphyKit/GKStart.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AE80F6C81A967BBB0018C58F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>AE80F6C71A967BBB0018C58F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>BC30798E424BFA8AE89D2556</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>BFE666A5E2555EE3F33F2772</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>C22F68E5CD9BBE9EF92414DA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>CF4095311B6E88526D6A6F3F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C87026E7BA80CE1314B1EA02</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>24A89A324F9D3029A463B3EE</string>
-				<string>08D7104E5CA1984C2A135600</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CF4095311B6E88526D6A6F3F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>AE80F6871A9665830018C58F</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65E81C1EFCEDF5EF23F443E5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4095311B6E88526D6A6F3F /* libPods.a */; };
+		AE80F6951A9665830018C58F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6941A9665830018C58F /* main.m */; };
+		AE80F6981A9665830018C58F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6971A9665830018C58F /* AppDelegate.m */; };
+		AE80F69B1A9665830018C58F /* GifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F69A1A9665830018C58F /* GifViewController.m */; };
+		AE80F6A01A9665830018C58F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE80F69F1A9665830018C58F /* Images.xcassets */; };
+		AE80F6A31A9665830018C58F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE80F6A11A9665830018C58F /* LaunchScreen.xib */; };
+		AE80F6AF1A9665830018C58F /* GifFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6AE1A9665830018C58F /* GifFinderTests.m */; };
+		AE80F6C21A9675CC0018C58F /* GKGifs.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6C11A9675CC0018C58F /* GKGifs.m */; };
+		AE80F6C51A96763F0018C58F /* GKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6C41A96763F0018C58F /* GKDefines.m */; };
+		AE80F6C81A967BBB0018C58F /* GKStart.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80F6C71A967BBB0018C58F /* GKStart.m */; };
+		AE82C16F1A96CBCF00D075AE /* GifTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE82C16E1A96CBCF00D075AE /* GifTableDelegate.m */; };
+		AE82C1721A96CBDD00D075AE /* GifTableDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = AE82C1711A96CBDD00D075AE /* GifTableDatasource.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE80F6A91A9665830018C58F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE80F6871A9665830018C58F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE80F68E1A9665830018C58F;
+			remoteInfo = GifFinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08D7104E5CA1984C2A135600 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		24A89A324F9D3029A463B3EE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AE80F68F1A9665830018C58F /* GifFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE80F6931A9665830018C58F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE80F6941A9665830018C58F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE80F6961A9665830018C58F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE80F6971A9665830018C58F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE80F6991A9665830018C58F /* GifViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifViewController.h; sourceTree = "<group>"; };
+		AE80F69A1A9665830018C58F /* GifViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifViewController.m; sourceTree = "<group>"; };
+		AE80F69F1A9665830018C58F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE80F6A21A9665830018C58F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AE80F6A81A9665830018C58F /* GifFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE80F6AD1A9665830018C58F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE80F6AE1A9665830018C58F /* GifFinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifFinderTests.m; sourceTree = "<group>"; };
+		AE80F6BB1A9668D80018C58F /* GiphyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiphyKit.h; path = GifFinder/GiphyKit/GiphyKit.h; sourceTree = "<group>"; };
+		AE80F6C01A9675CC0018C58F /* GKGifs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKGifs.h; path = GifFinder/GiphyKit/GKGifs.h; sourceTree = "<group>"; };
+		AE80F6C11A9675CC0018C58F /* GKGifs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKGifs.m; path = GifFinder/GiphyKit/GKGifs.m; sourceTree = "<group>"; };
+		AE80F6C31A96763F0018C58F /* GKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKDefines.h; path = GifFinder/GiphyKit/GKDefines.h; sourceTree = "<group>"; };
+		AE80F6C41A96763F0018C58F /* GKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKDefines.m; path = GifFinder/GiphyKit/GKDefines.m; sourceTree = "<group>"; };
+		AE80F6C61A967BBB0018C58F /* GKStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKStart.h; path = GifFinder/GiphyKit/GKStart.h; sourceTree = "<group>"; };
+		AE80F6C71A967BBB0018C58F /* GKStart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKStart.m; path = GifFinder/GiphyKit/GKStart.m; sourceTree = "<group>"; };
+		AE82C16D1A96CBCF00D075AE /* GifTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifTableDelegate.h; sourceTree = "<group>"; };
+		AE82C16E1A96CBCF00D075AE /* GifTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifTableDelegate.m; sourceTree = "<group>"; };
+		AE82C1701A96CBDD00D075AE /* GifTableDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifTableDatasource.h; sourceTree = "<group>"; };
+		AE82C1711A96CBDD00D075AE /* GifTableDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifTableDatasource.m; sourceTree = "<group>"; };
+		CF4095311B6E88526D6A6F3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE80F68C1A9665830018C58F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65E81C1EFCEDF5EF23F443E5 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE80F6A51A9665830018C58F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE80F6861A9665830018C58F = {
+			isa = PBXGroup;
+			children = (
+				AE80F6BE1A9668F20018C58F /* GiphyKit */,
+				AE80F6911A9665830018C58F /* GifFinder */,
+				AE80F6AB1A9665830018C58F /* GifFinderTests */,
+				AE80F6901A9665830018C58F /* Products */,
+				C87026E7BA80CE1314B1EA02 /* Pods */,
+				C22F68E5CD9BBE9EF92414DA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AE80F6901A9665830018C58F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F68F1A9665830018C58F /* GifFinder.app */,
+				AE80F6A81A9665830018C58F /* GifFinderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE80F6911A9665830018C58F /* GifFinder */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F6961A9665830018C58F /* AppDelegate.h */,
+				AE80F6971A9665830018C58F /* AppDelegate.m */,
+				AE80F6991A9665830018C58F /* GifViewController.h */,
+				AE80F69A1A9665830018C58F /* GifViewController.m */,
+				AE82C1731A96CBE900D075AE /* GifTableView */,
+				AE80F69F1A9665830018C58F /* Images.xcassets */,
+				AE80F6A11A9665830018C58F /* LaunchScreen.xib */,
+				AE80F6921A9665830018C58F /* Supporting Files */,
+			);
+			path = GifFinder;
+			sourceTree = "<group>";
+		};
+		AE80F6921A9665830018C58F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F6931A9665830018C58F /* Info.plist */,
+				AE80F6941A9665830018C58F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE80F6AB1A9665830018C58F /* GifFinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F6AE1A9665830018C58F /* GifFinderTests.m */,
+				AE80F6AC1A9665830018C58F /* Supporting Files */,
+			);
+			path = GifFinderTests;
+			sourceTree = "<group>";
+		};
+		AE80F6AC1A9665830018C58F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F6AD1A9665830018C58F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE80F6BE1A9668F20018C58F /* GiphyKit */ = {
+			isa = PBXGroup;
+			children = (
+				AE80F6BB1A9668D80018C58F /* GiphyKit.h */,
+				AE80F6C31A96763F0018C58F /* GKDefines.h */,
+				AE80F6C41A96763F0018C58F /* GKDefines.m */,
+				AE80F6C61A967BBB0018C58F /* GKStart.h */,
+				AE80F6C71A967BBB0018C58F /* GKStart.m */,
+				AE80F6C01A9675CC0018C58F /* GKGifs.h */,
+				AE80F6C11A9675CC0018C58F /* GKGifs.m */,
+			);
+			name = GiphyKit;
+			sourceTree = "<group>";
+		};
+		AE82C1731A96CBE900D075AE /* GifTableView */ = {
+			isa = PBXGroup;
+			children = (
+				AE82C16D1A96CBCF00D075AE /* GifTableDelegate.h */,
+				AE82C16E1A96CBCF00D075AE /* GifTableDelegate.m */,
+				AE82C1701A96CBDD00D075AE /* GifTableDatasource.h */,
+				AE82C1711A96CBDD00D075AE /* GifTableDatasource.m */,
+			);
+			name = GifTableView;
+			sourceTree = "<group>";
+		};
+		C22F68E5CD9BBE9EF92414DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF4095311B6E88526D6A6F3F /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C87026E7BA80CE1314B1EA02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24A89A324F9D3029A463B3EE /* Pods.debug.xcconfig */,
+				08D7104E5CA1984C2A135600 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE80F68E1A9665830018C58F /* GifFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE80F6B21A9665830018C58F /* Build configuration list for PBXNativeTarget "GifFinder" */;
+			buildPhases = (
+				BC30798E424BFA8AE89D2556 /* Check Pods Manifest.lock */,
+				AE80F68B1A9665830018C58F /* Sources */,
+				AE80F68C1A9665830018C58F /* Frameworks */,
+				AE80F68D1A9665830018C58F /* Resources */,
+				BFE666A5E2555EE3F33F2772 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GifFinder;
+			productName = GifFinder;
+			productReference = AE80F68F1A9665830018C58F /* GifFinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE80F6A71A9665830018C58F /* GifFinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE80F6B51A9665830018C58F /* Build configuration list for PBXNativeTarget "GifFinderTests" */;
+			buildPhases = (
+				AE80F6A41A9665830018C58F /* Sources */,
+				AE80F6A51A9665830018C58F /* Frameworks */,
+				AE80F6A61A9665830018C58F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE80F6AA1A9665830018C58F /* PBXTargetDependency */,
+			);
+			name = GifFinderTests;
+			productName = GifFinderTests;
+			productReference = AE80F6A81A9665830018C58F /* GifFinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE80F6871A9665830018C58F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Prologue;
+				TargetAttributes = {
+					AE80F68E1A9665830018C58F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					AE80F6A71A9665830018C58F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = AE80F68E1A9665830018C58F;
+					};
+				};
+			};
+			buildConfigurationList = AE80F68A1A9665830018C58F /* Build configuration list for PBXProject "GifFinder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE80F6861A9665830018C58F;
+			productRefGroup = AE80F6901A9665830018C58F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE80F68E1A9665830018C58F /* GifFinder */,
+				AE80F6A71A9665830018C58F /* GifFinderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE80F68D1A9665830018C58F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE80F6A31A9665830018C58F /* LaunchScreen.xib in Resources */,
+				AE80F6A01A9665830018C58F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE80F6A61A9665830018C58F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC30798E424BFA8AE89D2556 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BFE666A5E2555EE3F33F2772 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE80F68B1A9665830018C58F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE80F69B1A9665830018C58F /* GifViewController.m in Sources */,
+				AE80F6981A9665830018C58F /* AppDelegate.m in Sources */,
+				AE80F6C21A9675CC0018C58F /* GKGifs.m in Sources */,
+				AE80F6C51A96763F0018C58F /* GKDefines.m in Sources */,
+				AE82C1721A96CBDD00D075AE /* GifTableDatasource.m in Sources */,
+				AE80F6C81A967BBB0018C58F /* GKStart.m in Sources */,
+				AE80F6951A9665830018C58F /* main.m in Sources */,
+				AE82C16F1A96CBCF00D075AE /* GifTableDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE80F6A41A9665830018C58F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE80F6AF1A9665830018C58F /* GifFinderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE80F6AA1A9665830018C58F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE80F68E1A9665830018C58F /* GifFinder */;
+			targetProxy = AE80F6A91A9665830018C58F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE80F6A11A9665830018C58F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE80F6A21A9665830018C58F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE80F6B01A9665830018C58F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AE80F6B11A9665830018C58F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE80F6B31A9665830018C58F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24A89A324F9D3029A463B3EE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GifFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE80F6B41A9665830018C58F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08D7104E5CA1984C2A135600 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GifFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AE80F6B61A9665830018C58F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GifFinderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GifFinder.app/GifFinder";
+			};
+			name = Debug;
+		};
+		AE80F6B71A9665830018C58F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GifFinderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GifFinder.app/GifFinder";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE80F68A1A9665830018C58F /* Build configuration list for PBXProject "GifFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE80F6B01A9665830018C58F /* Debug */,
+				AE80F6B11A9665830018C58F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE80F6B21A9665830018C58F /* Build configuration list for PBXNativeTarget "GifFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE80F6B31A9665830018C58F /* Debug */,
+				AE80F6B41A9665830018C58F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE80F6B51A9665830018C58F /* Build configuration list for PBXNativeTarget "GifFinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE80F6B61A9665830018C58F /* Debug */,
+				AE80F6B71A9665830018C58F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE80F6871A9665830018C58F /* Project object */;
+}

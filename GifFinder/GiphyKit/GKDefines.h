@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef RCKDEFINES
-#define RCKDEFINES
+#ifndef GKDEFINES
+#define GKDEFINES
 
 #pragma mark - API
 

@@ -14,4 +14,7 @@
 
 @interface GKStart : NSObject
 
++ (void)start;
++ (FMDatabase *)sharedDatabase;
+
 @end

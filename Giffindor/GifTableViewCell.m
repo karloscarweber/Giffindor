@@ -20,7 +20,6 @@
 //    _imageView.animatedImage = image;
     _imageView.frame = CGRectMake(0.0, 0.0, 302.0, 200.0);
     [self addSubview:_imageView];
-    
     return self;
 }
 

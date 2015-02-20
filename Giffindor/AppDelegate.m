@@ -16,6 +16,12 @@
 
 @implementation AppDelegate
 
+@synthesize gvc = _gvc;
+
++ (AppDelegate *)sharedAppDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -25,9 +31,8 @@
     [GKStart start];
     
     // Override point for customization after application launch.
-    GifViewController *tvc = [[GifViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] init];    
-    [nc pushViewController:tvc animated:YES];
+    [nc pushViewController:_gvc animated:YES];
     
     self.window.rootViewController = nc;
     [self.window makeKeyAndVisible];

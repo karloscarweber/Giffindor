@@ -19,12 +19,17 @@
 
 //@synthesize gifTableView;
 @synthesize gifTableDelegate;
-@synthesize gifTableDatasource;
+@synthesize gifTableDatasource = _gifTableDatasource;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // setup table view
     [self buildTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(insertNewRow)
+                                                 name:@"insertNewRow"
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,8 +49,7 @@
     // loads gifs, and we don't cache them very much.
     gifTableDelegate = [[GifTableDelegate alloc] init];
     self.tableView.delegate = gifTableDelegate;
-    gifTableDatasource = [[GifTableDatasource alloc] init];
-    self.tableView.dataSource = gifTableDatasource;
+    self.tableView.dataSource = _gifTableDatasource;
     
     UISearchBar *bar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 44)];
     bar.barStyle = UIBarStyleDefault;
@@ -58,6 +62,29 @@
     self.tableView.frame = CGRectMake(0.0f, 0.0f, screenSize.width, screenSize.height);
 }
 
+- (void)insertNewRow:(NSNotification *)notification {
+
+//    [self.tableView reloadData];
+//    [self.tableView reloadRowsAtIndexPaths:]
+    NSLog(@"we should be reloading.");
+    
+    if ([notification.name isEqualToString:@"insertNewRow"]) {
+
+        int row = [_gifTableDatasource.gifs count];
+        NSLog(@"row number: %d", row);
+
+        if(row > 0) {
+            NSLog(@"***** ***** .");
+            NSIndexPath *path = [NSIndexPath indexPathForRow:(row - 1) inSection:0];
+            NSArray *rows = [[NSArray alloc] initWithObjects: path, nil];
+            [self.tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationNone];
+        }
+//        NSDictionary *moreUserInfo = @{@"row": @([gifs count])};
+//        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+//        [nc postNotificationName:@"insertNewRow" object:self userInfo:moreUserInfo];
+    }
+}
+
 #pragma mark - UISearchBarDelegate methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"search tapped");
@@ -65,7 +92,10 @@
     
     GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:searchBar.text];
-    [gifGetter searchForGifsUsingString:searchBar.text];
+        
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [gifGetter searchForGifsUsingString:searchBar.text];
+    });
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

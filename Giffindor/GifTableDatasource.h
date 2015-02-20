@@ -12,7 +12,8 @@
 
 @property int totalResults;
 //@property int loadedResults; // count the Gifs array, where gifs are stored
-@property (nonatomic, strong) NSMutableArray *gifs;
 @property (nonatomic, strong) NSString *currentSearchString;
+@property (nonatomic, strong) NSMutableArray *gifs;
+
 
 @end

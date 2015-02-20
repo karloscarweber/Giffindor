@@ -10,6 +10,7 @@
 #import "GKStart.h"
 #import "GKDefines.h"
 #import "GKGif.h"
+#import "AppDelegate.h"
 
 @implementation GKInterface
 
@@ -71,7 +72,7 @@
     
     // Setup the AFNetworking operation success and failure blocks
     // Also Execute the block
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [operation setCompletionBlockWithSuccess:^(AFURLConnectionOperation *operation, id responseObject) {
         
         NSDictionary *dict = (NSDictionary *)responseObject;
         
@@ -100,9 +101,12 @@
             gifToStore.image = [UIImage imageNamed:@"giphy.gif"];
             gifToStore.width = [[fixed_height objectForKey:@"width"] intValue];
             gifToStore.height = [[fixed_height objectForKey:@"height"] intValue];
-            [self saveGif:gifToStore];
-            [self cacheGif:gifToStore];
-            NSLog(@"lots of stuff happened");
+            dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                [self saveGif:gifToStore];
+            });
+            dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                [self cacheGif:gifToStore];
+            });
         }
      
         // Tell everybody that you succeeded and load up some more gifs into the hopper.
@@ -113,7 +117,9 @@
         NSLog(@"we failed somehow");
     }];
     
-    [operation start];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [operation start];
+    });
 }
 
 //- (NSDictionary*)getGifUsingId:(NSString *)idString {
@@ -174,17 +180,24 @@
 }
 
 - (void)cacheGif:(GKGif *)gifToCache {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         NSData *gif = [NSData dataWithContentsOfURL:[NSURL URLWithString:gifToCache.fixed_height_url]];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-        [gif writeToFile:[basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", gifToCache.gid]] atomically:YES];
-        
+        dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            [gif writeToFile:[basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", gifToCache.gid]] atomically:YES];
+        });
         // send the gif along on it's merry way all the way to the datasource.
-        NSDictionary *userInfo = @{@"gif": gif};
+        NSDictionary *userInfo = @{@"gif": gifToCache};
         NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"addGif" object:self userInfo:userInfo];
+        [nc postNotificationName:@"GKAddGif" object:self userInfo:userInfo];
+        
+        AppDelegate *applicationDelegate = [AppDelegate sharedAppDelegate]
+        
+//        [AppDelegate shareDelegate]
+//        AppDelegate *delegate = [UIApplication sharedApplication] shared;
+//        [MMTBAppDelegate sharedAppDelegate]
+        
         
         gif = nil;
         NSLog(@"%@.gif has been cached", gifToCache.gid);

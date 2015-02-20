@@ -1,6 +1,6 @@
 //
-//  GifFinderTests.m
-//  GifFinderTests
+//  GiffindorTests.m
+//  GiffindorTests
 //
 //  Created by Karl Oscar Weber on 2/19/15.
 //  Copyright (c) 2015 Prologue. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface GifFinderTests : XCTestCase
+@interface GiffindorTests : XCTestCase
 
 @end
 
-@implementation GifFinderTests
+@implementation GiffindorTests
 
 - (void)setUp {
     [super setUp];

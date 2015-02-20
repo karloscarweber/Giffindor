@@ -9,7 +9,7 @@
 #import "GifViewController.h"
 #import "GifTableDelegate.h"
 #import "GifTableDatasource.h"
-#import "GKGifs.h"
+#import "GKInterface.h"
 
 @interface GifViewController ()
 
@@ -63,7 +63,7 @@
     NSLog(@"search tapped");
     [searchBar resignFirstResponder];
     
-    GKGifs *gifGetter = [[GKGifs alloc] init];
+    GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:searchBar.text];
     [gifGetter searchForGifsUsingString:searchBar.text];
 }
@@ -72,7 +72,7 @@
     NSLog(@"cancel tapped");
     [searchBar resignFirstResponder];
     
-    GKGifs *gifGetter = [[GKGifs alloc] init];
+    GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:@""];
 }
 

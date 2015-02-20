@@ -25,4 +25,7 @@ NSString *const GKAPIKey = @"dc6zaTOxFJmzC";
 #pragma mark - Notifications
 
 NSString *const GKDidRetrieveGifs = @"GKDidRetrieveGifs";
+NSString *const GKAddGif          = @"GKAddGif";
 NSString *const GKDidDeleteGifs   = @"GKDidDeleteGifs";
+
+

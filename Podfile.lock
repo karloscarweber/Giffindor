@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FLAnimatedImage (1.0.8)
   - FMDB (2.5):
     - FMDB/standard (= 2.5)
   - FMDB/common (2.5)
@@ -29,11 +30,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - FLAnimatedImage (~> 1.0)
   - FMDB (~> 2.5)
   - Reachability (~> 3.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  FLAnimatedImage: 8669ace2a531fc0bb7344a6326f48c3a4c3de84b
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
 

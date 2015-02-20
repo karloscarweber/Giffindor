@@ -18,7 +18,8 @@
 
 #import "GKDefines.h"
 #import "GKStart.h"
-#import "GKGifs.h"
+#import "GKInterface.h"
+#import "GKGif.h"
 
 // Vendor
 #import <AFNetworking/AFNetworking.h>

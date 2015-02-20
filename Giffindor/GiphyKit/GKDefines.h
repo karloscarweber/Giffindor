@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Prologue. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #ifndef GKDEFINES
 #define GKDEFINES
@@ -26,6 +26,7 @@ extern NSString *const GKAPIKey;
 #pragma mark - Notifications
 
 extern NSString *const GKDidRetrieveGifs;
+extern NSString *const GKAddGif;
 extern NSString *const GKDidDeleteGifs;
 
 #endif

@@ -8,11 +8,12 @@
 
 #import "GifTableDatasource.h"
 #import "GiphyKit.h"
-#import "GKGifs.h"
+#import "GKInterface.h"
+#import "FLAnimatedImage.h"
 
 @implementation GifTableDatasource
 
-@synthesize currentSearchString;
+@synthesize gifs;
 
 - init {
     if(self = [super init]){
@@ -21,6 +22,14 @@
                                                  selector:@selector(reloadGifs)
                                                      name:GKDidRetrieveGifs
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(addGif)
+                                                     name:GKAddGif
+                                                   object:nil];
+        
+        
+        
     }
     return self;
 }
@@ -31,28 +40,44 @@
     
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GifCell"];
+        
+        FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://media4.giphy.com/media/DFiwMapItOTh6/200.gif"]]];
+        FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+        imageView.animatedImage = image;
+        imageView.frame = CGRectMake(0.0, 0.0, 302.0, 200.0);
+        [cell addSubview:imageView];
     }
     // check
-//    cell.imageView.image = [UIImage imageNamed:@"image.png"];
+//    cell.imageView.image = [UIImage imageNamed:@"giphy.gif"];
     
     [[cell textLabel] setText:@"emptycell"];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor greenColor];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 20;
+    return [gifs count];
 }
 
 - (void)reloadGifs {
     
-    GKGifs *gifGetter = [[GKGifs alloc] init];
+    GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter getSetting:@"currentSearchString"];
 //    if([currentSearchString isEqualToString:gif]) {
 //    
 //    }
 }
+
+- (void)addGif:(NSNotification *)notification {
+
+    if ([notification.name isEqualToString:@"GKAddGif"])
+    {
+        NSDictionary* userInfo = notification.userInfo;
+        GKGif* gif = userInfo[@"gif"];
+        [gifs addObject:gif];
+        
+    }
+}
+
 
 @end

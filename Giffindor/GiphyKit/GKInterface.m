@@ -55,15 +55,16 @@
 - (void)searchForGifsUsingString:(NSString *)searchString {
     NSLog(@"we're searching");
     // Setup the AFNetworking stuff.
+    NSString *filteredSearchString = [self filterSearchString:searchString];
     NSString *string = [NSString
                         stringWithFormat:@"%@://%@%@?q=%@&api_key=%@",
                         GKAPIScheme,
                         GKAPIHost,
                         GKSearch,
-                        [self filterSearchString:searchString],
+                        filteredSearchString,
                         GKAPIKey];
     
-    NSLog(@"%@", [self filterSearchString:searchString]);
+    NSLog(@"%@", [self filterSearchString:filteredSearchString]);
     
     // Setup the AFNetworking Request and Serializer
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
@@ -98,12 +99,10 @@
             gifToStore.gid = [gif objectForKey:@"id"];
             gifToStore.url = [gif objectForKey:@"url"];
             gifToStore.fixed_height_url = [fixed_height objectForKey:@"url"];
-            gifToStore.image = [UIImage imageNamed:@"giphy.gif"];
             gifToStore.width = [[fixed_height objectForKey:@"width"] intValue];
             gifToStore.height = [[fixed_height objectForKey:@"height"] intValue];
-            dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                [self saveGif:gifToStore];
-            });
+            gifToStore.searchString = filteredSearchString;
+            [self saveGif:gifToStore];
             dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                 [self cacheGif:gifToStore];
             });
@@ -117,20 +116,42 @@
         NSLog(@"we failed somehow");
     }];
     
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        [operation start];
-    });
+    [operation start];
+}
+
+
+// ok the idea is that we use the search string to get a huge list of our happy gifs,
+// we then iterate over them to see if we haven't actually added any of these things to our
+// tableView.
+- (NSMutableDictionary *)loadGifUsingSearchString {
+
+    NSString *searchString = [self getSetting:@"currentSearchString"];
+    NSLog(@"loadGifUsingSearchString called: %@", searchString);
+    
+    FMDatabase *sharedDatabase = [GKStart sharedDatabase];
+    [sharedDatabase open];
+    FMResultSet *results = [sharedDatabase executeQuery:@"SELECT * FROM gifcache WHERE searchString=?", [NSString stringWithFormat:@"%@", searchString]];
+    NSMutableDictionary *returnDictionary = [[NSMutableDictionary alloc] init];
+    
+    while([results next]) {
+        [returnDictionary setObject:[results stringForColumn:@"id"] forKey:[results stringForColumn:@"id"]];
+    }
+    [sharedDatabase close];
+    
+    NSLog(@"results: %d",[returnDictionary count]);
+    
+    return returnDictionary;
 }
 
 //- (NSDictionary*)getGifUsingId:(NSString *)idString {
 //    
 //}
-//- (NSDictionary*)getGifsUsingId:(NSArray *)searchArray {
+//- (NSDictionary*)getGifsUsingIds:(NSArray *)searchArray {
 //    
 //}
 
 
-#pragma mark - Settings
+#pragma mark - GifStuff
 - (GKGif *)getGif:(NSString *)gifId {
     FMDatabase *sharedDatabase = [GKStart sharedDatabase];
     [sharedDatabase open];
@@ -139,10 +160,11 @@
     
     while([results next]) {
         returnGif.gid = [results stringForColumn:@"id"];
-        returnGif.url = [results stringForColumn:@"id"];
-        returnGif.fixed_height_url = [results stringForColumn:@"id"];
+        returnGif.url = [results stringForColumn:@"url"];
+        returnGif.fixed_height_url = [results stringForColumn:@"fixed_height_url"];
         returnGif.width = [[results stringForColumn:@"width"] intValue];
         returnGif.height = [[results stringForColumn:@"height"] intValue];
+        returnGif.searchString = [results stringForColumn:@"searchString"];
     }
     [sharedDatabase close];
     return returnGif;
@@ -153,26 +175,30 @@
         FMDatabase *sharedDatabase = [GKStart sharedDatabase];
         [sharedDatabase open];
     
+        NSLog(@"save gif called: %@", gif.searchString);
+    
         // first check if the Setting is already set.
         // if it is then just update it, otherwise, insert a new one.
         GKGif *key = [self getGif:gif.gid];
-        NSLog(@"%@, key: %@", gif.gid, key.gid);
+//        NSLog(@"%@, key: %@", gif.gid, key.gid);
         if([key.gid isEqualToString:@"DFiwMapItOTh6"]){
-            [sharedDatabase executeUpdate:@"UPDATE gifcache SET id=?, url=?, fixed_height_url=?, width=?, height=? WHERE id=?",
+            [sharedDatabase executeUpdate:@"UPDATE gifcache SET id=?, url=?, fixed_height_url=?, width=?, height=?, searchString=? WHERE id=?",
              [NSString stringWithFormat:@"%@", gif.gid],
              [NSString stringWithFormat:@"%@", gif.url],
              [NSString stringWithFormat:@"%@", gif.fixed_height_url],
              [NSString stringWithFormat:@"%d", gif.width],
              [NSString stringWithFormat:@"%d", gif.height],
+             [NSString stringWithFormat:@"%@", gif.searchString],
              [NSString stringWithFormat:@"%@", gif.gid],
              nil ];
         } else {
-            [sharedDatabase executeUpdate:@"INSERT INTO gifcache (id, url, fixed_height_url, width, height) VALUES (?,?,?,?,?)",
+            [sharedDatabase executeUpdate:@"INSERT INTO gifcache (id, url, fixed_height_url, width, height, searchString) VALUES (?,?,?,?,?,?)",
              [NSString stringWithFormat:@"%@", gif.gid],
              [NSString stringWithFormat:@"%@", gif.url],
              [NSString stringWithFormat:@"%@", gif.fixed_height_url],
              [NSString stringWithFormat:@"%d", gif.width],
              [NSString stringWithFormat:@"%d", gif.height],
+             [NSString stringWithFormat:@"%@", gif.searchString],
              nil ];
         }
         
@@ -180,33 +206,26 @@
 }
 
 - (void)cacheGif:(GKGif *)gifToCache {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        NSData *gif = [NSData dataWithContentsOfURL:[NSURL URLWithString:gifToCache.fixed_height_url]];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-        dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-            [gif writeToFile:[basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", gifToCache.gid]] atomically:YES];
-        });
-        // send the gif along on it's merry way all the way to the datasource.
-        NSDictionary *userInfo = @{@"gif": gifToCache};
-        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"GKAddGif" object:self userInfo:userInfo];
-        
-        AppDelegate *applicationDelegate = [AppDelegate sharedAppDelegate]
-        
-//        [AppDelegate shareDelegate]
-//        AppDelegate *delegate = [UIApplication sharedApplication] shared;
-//        [MMTBAppDelegate sharedAppDelegate]
-        
-        
-        gif = nil;
-        NSLog(@"%@.gif has been cached", gifToCache.gid);
-    });
+    // caches the gif
+    NSData *gif = [NSData dataWithContentsOfURL:[NSURL URLWithString:gifToCache.fixed_height_url]];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    [gif writeToFile:[basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", gifToCache.gid]] atomically:YES];
     
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKDidRetrieveGifs object:nil];
+    });
 }
 
 - (NSString *)filterSearchString:(NSString *)sample {
     return [sample stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+}
+
+- (int)count {
+    
+    // here is where we get the total number of gifs.
+    
+    return 12;
 }
 
 @end

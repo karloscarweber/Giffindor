@@ -56,11 +56,12 @@
      fixed_height_url (TEXT DEFAULT NULL)
      width (INTEGER DEFAULT NULL)
      height (INTEGER DEFAULT NULL)
+     searchString (TEXT DEFAULT NULL)
      */
-    // CREATE TABLE IF NOT EXISTS gifcache (id TEXT PRIMARY KEY, url TEXT DEFAULT NULL, fixed_height_url TEXT DEFAULT NULL, width INTEGER DEFAULT NULL, height INTEGER DEFAULT NULL))
+    // CREATE TABLE IF NOT EXISTS gifcache (id TEXT PRIMARY KEY, url TEXT DEFAULT NULL, fixed_height_url TEXT DEFAULT NULL, width INTEGER DEFAULT NULL, height INTEGER DEFAULT NULL, searchString TEXT DEFAULT NULL)
     FMDatabase *database = [GKStart sharedDatabase];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS gifcache (id TEXT PRIMARY KEY, url TEXT DEFAULT NULL, fixed_height_url TEXT DEFAULT NULL, width INTEGER DEFAULT NULL, height INTEGER DEFAULT NULL)"];
+    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS gifcache (id TEXT PRIMARY KEY, url TEXT DEFAULT NULL, fixed_height_url TEXT DEFAULT NULL, width INTEGER DEFAULT NULL, height INTEGER DEFAULT NULL, searchString TEXT DEFAULT NULL)"];
     [database close];
 }
 

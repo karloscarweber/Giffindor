@@ -30,6 +30,9 @@
                                              selector:@selector(insertNewRow)
                                                  name:@"insertNewRow"
                                                object:nil];
+    
+    // create autoupdate run loop
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.50f target:self selector:@selector(updateGifs) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,12 +69,10 @@
 
 //    [self.tableView reloadData];
 //    [self.tableView reloadRowsAtIndexPaths:]
-    NSLog(@"we should be reloading.");
     
     if ([notification.name isEqualToString:@"insertNewRow"]) {
 
         int row = [_gifTableDatasource.gifs count];
-        NSLog(@"row number: %d", row);
 
         if(row > 0) {
             NSLog(@"***** ***** .");
@@ -79,9 +80,6 @@
             NSArray *rows = [[NSArray alloc] initWithObjects: path, nil];
             [self.tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationNone];
         }
-//        NSDictionary *moreUserInfo = @{@"row": @([gifs count])};
-//        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-//        [nc postNotificationName:@"insertNewRow" object:self userInfo:moreUserInfo];
     }
 }
 
@@ -91,8 +89,9 @@
     [searchBar resignFirstResponder];
     
     GKInterface *gifGetter = [[GKInterface alloc] init];
-    [gifGetter saveSetting:@"currentSearchString" withValue:searchBar.text];
-        
+    [gifGetter saveSetting:@"currentSearchString" withValue:[searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
+    [self clearTable];
+    
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [gifGetter searchForGifsUsingString:searchBar.text];
     });
@@ -104,6 +103,41 @@
     
     GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:@""];
+}
+
+- (void)clearTable {
+    NSLog(@"clear table called");
+    _gifTableDatasource.loadedgifs = 0;
+    _gifTableDatasource.gifs = [[NSMutableArray alloc] initWithObjects:nil, nil];
+    [self.tableView reloadData];
+}
+
+- (void)updateGifs {
+    
+//    NSLog(@"well I still work");
+    
+    GKInterface *gifGetter = [[GKInterface alloc] init];
+    NSMutableDictionary *dict = [gifGetter loadGifUsingSearchString];
+    
+    NSLog(@"***************** addGifs called");
+    
+    for(id key in dict) {
+        NSLog(@"key=%@ value=%@", key, [dict objectForKey:key]);
+    }
+    
+    
+    
+//    if( _gifTableDatasource.loadedgifs < [_gifTableDatasource.gifs count] ) {
+//        
+//        NSMutableArray *rows = [[NSMutableArray alloc] initWithObjects: nil];
+//        while ( _gifTableDatasource.loadedgifs < [_gifTableDatasource.gifs count]) {
+//            
+//            NSIndexPath *path = [NSIndexPath indexPathForRow:*((_gifTableDatasource.loadedgifs - 1)) inSection:0];
+//            [rows addObject:path];
+//            _gifTableDatasource.loadedgifs++;
+//        }
+//        [self.tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationNone];
+//    }
 }
 
 @end

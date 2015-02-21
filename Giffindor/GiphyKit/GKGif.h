@@ -13,8 +13,8 @@
 @property (nonatomic, strong) NSString *gid;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *fixed_height_url;
-@property (nonatomic, strong) UIImage *image;
 @property int width;
 @property int height;
+@property (nonatomic, strong) NSString *searchString; 
 
 @end

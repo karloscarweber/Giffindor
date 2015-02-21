@@ -13,9 +13,9 @@
 @synthesize gid;
 @synthesize url;
 @synthesize fixed_height_url;
-@synthesize image;
 @synthesize width;
 @synthesize height;
+@synthesize searchString;
 
 - (GKGif *)init {
 
@@ -25,37 +25,31 @@
         fixed_height_url = @"http://media4.giphy.com/media/DFiwMapItOTh6/200.gif";
         width = 302;
         height = 200;
+        searchString = @"";
     }
     return self;
 }
 
-
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    
-    // encode Placement variables
     [encoder encodeObject:gid forKey:@"gid"];
     [encoder encodeObject:url forKey:@"url"];
     [encoder encodeObject:fixed_height_url forKey:@"fixed_height_url"];
     [encoder encodeInt:width forKey:@"width"];
     [encoder encodeInt:height forKey:@"height"];
-    
+    [encoder encodeObject:searchString forKey:@"searchString"];
 }
 
 -initWithCoder:(NSCoder *)decoder
 {
     if (self = [super init]) {
-        
-        // encode type:
         gid = [decoder decodeObjectForKey:@"gid"];
         url = [decoder decodeObjectForKey:@"url"];
         fixed_height_url = [decoder decodeObjectForKey:@"fixed_height_url"];
         width = [decoder decodeIntForKey:@"width"];
         height = [decoder decodeIntForKey:@"height"];
+        searchString = [decoder decodeObjectForKey:@"searchString"];
     }
     return self;
 }
-
-
-
 
 @end

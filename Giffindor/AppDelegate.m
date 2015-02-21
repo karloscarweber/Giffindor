@@ -31,6 +31,7 @@
     [GKStart start];
     
     // Override point for customization after application launch.
+    _gvc = [[GifViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] init];    
     [nc pushViewController:_gvc animated:YES];
     

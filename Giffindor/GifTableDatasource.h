@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GKGif.h"
 
 @interface GifTableDatasource : NSObject <UITableViewDataSource>
 
-@property int totalResults;
 //@property int loadedResults; // count the Gifs array, where gifs are stored
 @property (nonatomic, strong) NSString *currentSearchString;
-@property (nonatomic, strong) NSMutableArray *gifs;
 
+
+- (void)addGif:(GKGif *)gifToAdd;
+- (void)addGifs;
 
 @end

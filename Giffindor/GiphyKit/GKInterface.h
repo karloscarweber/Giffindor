@@ -20,13 +20,17 @@
 - (NSString *)getSetting:(NSString *)settingName;
 - (void)saveSetting:(NSString *)settingName withValue:(NSString *)settingValue;
 
-
 - (void)searchForGifsUsingString:(NSString *)searchString;
+- (NSMutableDictionary *)loadGifUsingSearchString;
 - (NSMutableDictionary *)getGifUsingId:(NSString *)idString;
-- (NSMutableDictionary *)getGifsUsingId:(NSArray *)searchArray;
+- (NSMutableDictionary *)getGifsUsingIds:(NSArray *)searchArray;
 
 - (GKGif *)getGif:(NSString *)gifId;
+- (void)saveGif:(GKGif *)gif;
+- (void)cacheGif:(GKGif *)gifToCache;
+- (NSString *)filterSearchString:(NSString *)sample;
 
-// Utility stuff
+/*Gif as models*/
+- (int)count;
 
 @end

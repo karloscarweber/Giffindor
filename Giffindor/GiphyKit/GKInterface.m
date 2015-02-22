@@ -48,7 +48,7 @@
 }
 
 - (void)searchForGifsUsingString:(NSString *)searchString withOffset:(int)offset {
-    NSLog(@"we're searching");
+//    NSLog(@"we're searching");
     // Setup the AFNetworking stuff.
     NSString *filteredSearchString = [self filterSearchString:searchString];
     NSString *string = [NSString
@@ -60,7 +60,7 @@
                         GKAPIKey,
                         offset];
     
-    NSLog(@"%@", [self filterSearchString:filteredSearchString]);
+//    NSLog(@"%@", [self filterSearchString:filteredSearchString]);
     
     // Setup the AFNetworking Request and Serializer
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
@@ -85,7 +85,6 @@
         
         // save them gifs
         NSMutableDictionary *data = [dict objectForKey: @"data"];
-        
         NSString *numberOfNewGifs = [NSString stringWithFormat:@"%d", [data count] ];
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GifsLoadedNotification" object:numberOfNewGifs];
@@ -110,13 +109,23 @@
      
         // Tell everybody that you succeeded and load up some more gifs into the hopper.
 
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kRCKloadDataFailed object:nil];
         NSLog(@"we failed somehow");
     }];
     
     [operation start];
+}
+
+- (void)clearCache {
+    FMDatabase *sharedDatabase = [GKStart sharedDatabase];
+    [sharedDatabase open];
+    FMResultSet *results = [sharedDatabase executeQuery:@"SELECT * FROM gifcache ORDER BY id ASC"];
+    while([results next]) {
+        NSLog(@"Deleted: %@", [results stringForColumn:@"id"]);
+        [sharedDatabase executeUpdate:@"DELETE from gifcache WHERE id = ?", [results stringForColumn:@"id"]];
+    }
+    [sharedDatabase close];
 }
 
 
@@ -126,7 +135,7 @@
 - (NSMutableArray *)loadGifUsingSearchString {
 
     NSString *searchString = [self getSetting:@"currentSearchString"];
-    NSLog(@"loadGifUsingSearchString called: %@", searchString);
+//    NSLog(@"loadGifUsingSearchString called: %@", searchString);
     
     FMDatabase *sharedDatabase = [GKStart sharedDatabase];
     [sharedDatabase open];
@@ -147,17 +156,9 @@
     }
     [sharedDatabase close];
     
-    NSLog(@"loadGifUsingSearchString results: %d", [gifs count]);
-    
+//    NSLog(@"loadGifUsingSearchString results: %d", [gifs count]);
     return gifs;
 }
-
-//- (NSDictionary*)getGifUsingId:(NSString *)idString {
-//    
-//}
-//- (NSDictionary*)getGifsUsingIds:(NSArray *)searchArray {
-//    
-//}
 
 #pragma mark - GifStuff
 - (GKGif *)getGif:(NSString *)gifId {
@@ -212,10 +213,11 @@
              [NSString stringWithFormat:@"%@", gif.searchString],
              nil ];
         }
-        
         [sharedDatabase close];
     
-        [[NSNotificationCenter defaultCenter] postNotificationName:GKAddGif object:nil];
+    NSDictionary* userInfo = @{@"gif": gif};
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:GKAddGif object:self userInfo:userInfo];
 }
 
 - (NSString *)filterSearchString:(NSString *)sample {
@@ -231,7 +233,11 @@
 - (GKGif *)getGifAtRow:(int)row {
 //    GKGif *gif = [[GKGif alloc] init];
     NSArray *gifs = [self loadGifUsingSearchString];
-    return [gifs objectAtIndex:(row)];
+    if ([gifs count] >= row) {
+        return [gifs objectAtIndex:(row)];
+    } else {
+        return nil;
+    }
 }
 
 @end

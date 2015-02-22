@@ -16,8 +16,6 @@
 
 @interface GifViewController ()
 
-@property (nonatomic, strong) NSTimer *refreshtimer;
-
 @end
 
 @implementation GifViewController
@@ -25,6 +23,7 @@
 //@synthesize gifTableView;
 @synthesize gifTableDelegate;
 @synthesize gifCache = _gifCache;
+@synthesize gifDataCache = _gifDataCache;
 @synthesize gifSafetyArray = _gifSafetyArray;
 @synthesize refreshtimer = _refreshtimer;
 @synthesize lastSearchOffset = _lastSearchOffset;
@@ -36,44 +35,38 @@
     [self buildTableView];
 
     self.gifCache = [[NSMutableDictionary alloc] init];
+    self.gifDataCache = [[NSMutableArray alloc] init];
     self.gifSafetyArray = [[NSMutableArray alloc] init];
 
     // create autoupdate run loop
-    self.refreshtimer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(updateGifs) userInfo:nil repeats:YES];
+    self.refreshtimer = [NSTimer scheduledTimerWithTimeInterval:3.5f target:self selector:@selector(updateGifs) userInfo:nil repeats:YES];
     
     self.lastSearchOffset = 0;
     self.lastRequestMaximum = 0;
     
     // setup the low memory warning handler:
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidReceiveMemoryWarningNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-
-        // fil this array with the duds
-        NSMutableArray *clearArray = [[NSMutableArray alloc] init];
-        for (GKGif *gif in self.gifCache) {
-            // using NSPredicate
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.text LIKE[cd] %@", gif.gid];
-            NSArray *filtered = [self.gifSafetyArray filteredArrayUsingPredicate:predicate];
-            if( [filtered count] < 1 ) {
-                // clear it
-                [clearArray addObject:gif.gid];
-            }
-        }
         
-        for (NSString *key in clearArray) {
-            [self.gifCache removeObjectForKey:key];
+        NSArray *gifKeys = [self.gifCache allKeys];
+        for (NSString *gifKey in gifKeys) {
+        
+            BOOL deleteMe = YES;
+            
+            for (NSString *safeKey in self.gifSafetyArray) {
+                if ([gifKey isEqualToString:safeKey]) {
+                    deleteMe = NO;
+                }
+            }
+            
+            if (deleteMe == YES){
+                [self.gifCache removeObjectForKey:gifKey];
+            }
         }
         
         // our gifing is great
     }];
     
-    // get the signal when we have gifs loaded.
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"GifsLoadedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
-        
-    }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateGifs) name:GKAddGif object:nil];
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addGif:) name:GKAddGif object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,7 +95,7 @@
     bar.showsCancelButton = YES;
     bar.delegate = self;
     self.tableView.tableHeaderView = bar;
-    NSLog(@"%f", screenSize.width);
+//    NSLog(@"%f", screenSize.width);
     self.tableView.frame = CGRectMake(0.0f, 0.0f, screenSize.width, screenSize.height);
     
     GKInterface *gifGetter = [[GKInterface alloc] init];
@@ -111,12 +104,13 @@
 
 #pragma mark - UISearchBarDelegate methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"search tapped");
+//    NSLog(@"search tapped");
     [searchBar resignFirstResponder];
+    
+    [self clearTable];
     
     GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:[searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
-    [self clearTable];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [gifGetter searchForGifsUsingString:searchBar.text withOffset:0];
@@ -124,42 +118,62 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"cancel tapped");
+//    NSLog(@"cancel tapped");
     [searchBar resignFirstResponder];
-    
     GKInterface *gifGetter = [[GKInterface alloc] init];
     [gifGetter saveSetting:@"currentSearchString" withValue:@""];
 }
 
 - (void)clearTable {
-//    GKInterface *gifs = [[GKInterface alloc] init];
-//    [gifs saveSetting:@"currentSearchString" withValue:@""];
+    GKInterface *gifGetter = [[GKInterface alloc] init];
+    [gifGetter clearCache];
+    self.gifDataCache = [[NSMutableArray alloc] init];
     self.gifCache = [[NSMutableDictionary alloc] init];
+    self.gifSafetyArray = [[NSMutableArray alloc] init];
     [self.tableView reloadData];
 }
 
 - (void)updateGifs {
-    
-    NSArray *array = [[[GKInterface alloc] init] loadGifUsingSearchString];
-    int numrows = [self.tableView numberOfRowsInSection:0];
-    
-    NSLog(@"number of rows: %d", numrows);
-    NSLog(@"number of gifs: %d", [array count]);
-    
-    if (numrows < [array count] && self.lastRequestMaximum != numrows){
-
-        NSMutableArray *paths = [[NSMutableArray alloc] init];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         
-        while (numrows < [array count]) {
-           [paths addObject:[NSIndexPath indexPathForRow:numrows - 1 inSection:0]];
-            numrows = numrows + 1;
+        NSArray *array = [[[GKInterface alloc] init] loadGifUsingSearchString];
+        int numrows = [self.tableView numberOfRowsInSection:0];
+        
+//        NSLog(@"number of rows: %d ________________ (updategifs)", numrows);
+//        NSLog(@"table height: %f", self.tableView.contentSize.height);
+    //    NSLog(@"number of gifs: %d", [self.gifDataCache count]);
+        
+        if (numrows < [array count]){
+            NSMutableArray *paths = [[NSMutableArray alloc] init];
+            
+            while (numrows < [array count]) {
+                if (numrows > 0) {
+                    [paths addObject:[NSIndexPath indexPathForRow:numrows - 1 inSection:0]];
+                }
+                numrows = numrows + 1;
+            }
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+//                [self.tableView beginUpdates];
+
+                dispatch_sync(dispatch_get_main_queue(), ^(void){
+                    // update the number of thingys in the other thingy too.
+                    if ([self.gifDataCache count] < [array count]){
+                        for (NSIndexPath *path in paths) {
+//                            NSLog(@"the path that kills us: %d", path.row);
+                            GKGif *newgif = [[[GKInterface alloc] init] getGifAtRow:path.row];
+                            [self.gifDataCache addObject:newgif];
+                        }
+                    }
+                    [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+                });
+//                [self.tableView endUpdates];
+//                NSLog(@"updates triggered");
+                
+            });
         }
-//        [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-//        [self.tableView reloadData];
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
-    }
+        
+    });
 }
 
 #pragma mark - UITableViewDataSource
@@ -217,9 +231,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    GKInterface *gifs = [[GKInterface alloc] init];
-    return [gifs count];
-//    return [self.gifCache count];
+//    NSLog(@"number of rows: %d ________________ (numberOfRows)", [self.gifDataCache count]);
+    return [self.gifDataCache count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -234,7 +247,9 @@
     if(difference < 10 && self.lastRequestMaximum != numrows) {
         GKInterface *gifInterface = [[GKInterface alloc] init];
         self.lastSearchOffset = self.lastSearchOffset + 24;
-        [gifInterface searchForGifsUsingString:[gifInterface getSetting:@"currentSearchString"] withOffset:self.lastSearchOffset];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            [gifInterface searchForGifsUsingString:[gifInterface getSetting:@"currentSearchString"] withOffset:self.lastSearchOffset];
+        });
         self.lastRequestMaximum = numrows;
     }
 }

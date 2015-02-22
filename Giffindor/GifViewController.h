@@ -8,14 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "GifTableDelegate.h"
-#import "GifTableDatasource.h"
 
-@interface GifViewController : UITableViewController <UISearchBarDelegate>
+@interface GifViewController : UITableViewController <UISearchBarDelegate, UITableViewDataSource>
 
 //@property (nonatomic, strong) UITableView *gifTableView;
 @property (nonatomic, strong) GifTableDelegate *gifTableDelegate;
-@property (nonatomic, strong) GifTableDatasource *gifTableDatasource;
+// we store the gifs based on their id here
+@property (nonatomic, strong) NSMutableDictionary *gifCache;
+/*
+    everytime we cache arrays we add their ids here
+    when we need get rid of gifs we clear everything that's not in this array. from the gifCache
+    we regularly push/pop gif ids to this array
+*/
+@property (nonatomic, strong) NSMutableArray *gifSafetyArray;
 
-- (void)searchUsingString:(NSString *)searchString;
+@property int lastSearchOffset;
+@property int lastRequestMaximum;
 
 @end

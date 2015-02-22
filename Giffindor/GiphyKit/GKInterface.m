@@ -47,22 +47,18 @@
     [sharedDatabase close];
 }
 
-//- (void)searchForGifsUsingString:(NSString *)searchString {
-//    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-////    return dictionary;
-//}
-
-- (void)searchForGifsUsingString:(NSString *)searchString {
+- (void)searchForGifsUsingString:(NSString *)searchString withOffset:(int)offset {
     NSLog(@"we're searching");
     // Setup the AFNetworking stuff.
     NSString *filteredSearchString = [self filterSearchString:searchString];
     NSString *string = [NSString
-                        stringWithFormat:@"%@://%@%@?q=%@&api_key=%@",
+                        stringWithFormat:@"%@://%@%@?q=%@&api_key=%@&offset=%d",
                         GKAPIScheme,
                         GKAPIHost,
                         GKSearch,
                         filteredSearchString,
-                        GKAPIKey];
+                        GKAPIKey,
+                        offset];
     
     NSLog(@"%@", [self filterSearchString:filteredSearchString]);
     
@@ -89,27 +85,31 @@
         
         // save them gifs
         NSMutableDictionary *data = [dict objectForKey: @"data"];
+        
+        NSString *numberOfNewGifs = [NSString stringWithFormat:@"%d", [data count] ];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GifsLoadedNotification" object:numberOfNewGifs];
+        
         for(NSDictionary *gif in data){
         
             GKGif *gifToStore = [[GKGif alloc] init];
             
             NSDictionary *images = [gif objectForKey:@"images"];
-            NSDictionary *fixed_height = [images objectForKey:@"fixed_height_downsampled"];
-            
+            NSDictionary *fixed_height = [images objectForKey:@"fixed_height"];
             gifToStore.gid = [gif objectForKey:@"id"];
             gifToStore.url = [gif objectForKey:@"url"];
             gifToStore.fixed_height_url = [fixed_height objectForKey:@"url"];
             gifToStore.width = [[fixed_height objectForKey:@"width"] intValue];
             gifToStore.height = [[fixed_height objectForKey:@"height"] intValue];
             gifToStore.searchString = filteredSearchString;
-            [self saveGif:gifToStore];
-            dispatch_sync(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                [self cacheGif:gifToStore];
+            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+                [self saveGif:gifToStore];
             });
         }
      
         // Tell everybody that you succeeded and load up some more gifs into the hopper.
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kGifsLoadedNotification object:nil];
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kRCKloadDataFailed object:nil];
@@ -123,7 +123,7 @@
 // ok the idea is that we use the search string to get a huge list of our happy gifs,
 // we then iterate over them to see if we haven't actually added any of these things to our
 // tableView.
-- (NSMutableDictionary *)loadGifUsingSearchString {
+- (NSMutableArray *)loadGifUsingSearchString {
 
     NSString *searchString = [self getSetting:@"currentSearchString"];
     NSLog(@"loadGifUsingSearchString called: %@", searchString);
@@ -131,16 +131,25 @@
     FMDatabase *sharedDatabase = [GKStart sharedDatabase];
     [sharedDatabase open];
     FMResultSet *results = [sharedDatabase executeQuery:@"SELECT * FROM gifcache WHERE searchString=?", [NSString stringWithFormat:@"%@", searchString]];
-    NSMutableDictionary *returnDictionary = [[NSMutableDictionary alloc] init];
+//    FMResultSet *results = [sharedDatabase executeQuery:@"SELECT * FROM gifcache", [NSString stringWithFormat:@"%@", searchString]];
+    NSMutableArray *gifs = [[NSMutableArray alloc] init];
     
     while([results next]) {
-        [returnDictionary setObject:[results stringForColumn:@"id"] forKey:[results stringForColumn:@"id"]];
+        GKGif *returnGif = [[GKGif alloc] init];
+        returnGif.gid = [results stringForColumn:@"id"];
+        returnGif.url = [results stringForColumn:@"url"];
+        returnGif.fixed_height_url = [results stringForColumn:@"fixed_height_url"];
+        returnGif.width = [[results stringForColumn:@"width"] intValue];
+        returnGif.height = [[results stringForColumn:@"height"] intValue];
+        returnGif.searchString = [results stringForColumn:@"searchString"];
+//        NSLog(@"a sample return gif id: %@", returnGif.gid);
+        [gifs addObject:returnGif];
     }
     [sharedDatabase close];
     
-    NSLog(@"results: %d",[returnDictionary count]);
+    NSLog(@"loadGifUsingSearchString results: %d", [gifs count]);
     
-    return returnDictionary;
+    return gifs;
 }
 
 //- (NSDictionary*)getGifUsingId:(NSString *)idString {
@@ -149,7 +158,6 @@
 //- (NSDictionary*)getGifsUsingIds:(NSArray *)searchArray {
 //    
 //}
-
 
 #pragma mark - GifStuff
 - (GKGif *)getGif:(NSString *)gifId {
@@ -171,17 +179,17 @@
 }
 
 - (void)saveGif:(GKGif *)gif {
-        // get an instance of the database, and then save this sucker.
+
+//        NSLog(@"save gif called.");
+    
         FMDatabase *sharedDatabase = [GKStart sharedDatabase];
         [sharedDatabase open];
     
-        NSLog(@"save gif called: %@", gif.searchString);
-    
-        // first check if the Setting is already set.
-        // if it is then just update it, otherwise, insert a new one.
         GKGif *key = [self getGif:gif.gid];
-//        NSLog(@"%@, key: %@", gif.gid, key.gid);
-        if([key.gid isEqualToString:@"DFiwMapItOTh6"]){
+        if([gif.gid isEqualToString:key.gid]){
+            
+//            NSLog(@"identical i think");
+            
             [sharedDatabase executeUpdate:@"UPDATE gifcache SET id=?, url=?, fixed_height_url=?, width=?, height=?, searchString=? WHERE id=?",
              [NSString stringWithFormat:@"%@", gif.gid],
              [NSString stringWithFormat:@"%@", gif.url],
@@ -192,6 +200,9 @@
              [NSString stringWithFormat:@"%@", gif.gid],
              nil ];
         } else {
+            
+//            NSLog(@"so unique!");
+            
             [sharedDatabase executeUpdate:@"INSERT INTO gifcache (id, url, fixed_height_url, width, height, searchString) VALUES (?,?,?,?,?,?)",
              [NSString stringWithFormat:@"%@", gif.gid],
              [NSString stringWithFormat:@"%@", gif.url],
@@ -203,29 +214,24 @@
         }
         
         [sharedDatabase close];
-}
-
-- (void)cacheGif:(GKGif *)gifToCache {
-    // caches the gif
-    NSData *gif = [NSData dataWithContentsOfURL:[NSURL URLWithString:gifToCache.fixed_height_url]];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    [gif writeToFile:[basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", gifToCache.gid]] atomically:YES];
     
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [[NSNotificationCenter defaultCenter] postNotificationName:GKDidRetrieveGifs object:nil];
-    });
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKAddGif object:nil];
 }
 
 - (NSString *)filterSearchString:(NSString *)sample {
     return [sample stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 }
 
-- (int)count {
-    
+- (NSInteger)count {
     // here is where we get the total number of gifs.
-    
-    return 12;
+    NSArray *gifs = [self loadGifUsingSearchString];
+    return [gifs count];
+}
+
+- (GKGif *)getGifAtRow:(int)row {
+//    GKGif *gif = [[GKGif alloc] init];
+    NSArray *gifs = [self loadGifUsingSearchString];
+    return [gifs objectAtIndex:(row)];
 }
 
 @end

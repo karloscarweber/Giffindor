@@ -20,17 +20,23 @@
 - (NSString *)getSetting:(NSString *)settingName;
 - (void)saveSetting:(NSString *)settingName withValue:(NSString *)settingValue;
 
-- (void)searchForGifsUsingString:(NSString *)searchString;
-- (NSMutableDictionary *)loadGifUsingSearchString;
+// gif specific api things
+- (void)searchForGifsUsingString:(NSString *)searchString withOffset:(int)offset;
+- (NSArray *)loadGifUsingSearchString;
 - (NSMutableDictionary *)getGifUsingId:(NSString *)idString;
 - (NSMutableDictionary *)getGifsUsingIds:(NSArray *)searchArray;
 
 - (GKGif *)getGif:(NSString *)gifId;
 - (void)saveGif:(GKGif *)gif;
-- (void)cacheGif:(GKGif *)gifToCache;
 - (NSString *)filterSearchString:(NSString *)sample;
 
+
+
 /*Gif as models*/
-- (int)count;
+- (int)count; // returns the total number of gifs in the hopper
+- (GKGif *)getGifAtRow:(int)row;
+- (void)clearGifCache; // clears the gif cache of old gifs
+
+
 
 @end
